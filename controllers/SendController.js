@@ -95,7 +95,9 @@ router.post('/fee', async (req, res) => {
                         };
                         try {
                             //OK your APP is now authorized to SEND
-                            return res.json(await calculateFee(payLoad.amount, payLoad.from));
+                            return res.json({
+                                fee: await calculateFee(payLoad.amount, payLoad.from)
+                            });
                         } catch (err) {
                             console.error(err);
                             return res.status(400).send(`Error while trying to calculate the FEE -> ${err.message}`);
