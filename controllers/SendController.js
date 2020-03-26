@@ -84,11 +84,6 @@ router.post('/fee', async (req, res) => {
                         return res.status(403).send(`This method is protected by TOKEN.`);
                     } else {
 
-                        let decryptedPK = decrypt(req.body.key);
-
-                        if (_.isUndefined(decryptedPK) || _.isNull(decryptedPK))
-                            return res.status(403).send(`Your PK could not be decrypted.`);
-
                         let payLoad = {
                             amount: req.body.amount,
                             from: req.body.from
